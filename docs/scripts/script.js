@@ -60,6 +60,15 @@ function handleSearch(event) {
     displayCountries(filteredUsers);  
 }
 
+function filterCountriesByRegion(region) {
+    return countriesList.filter(country => 
+        country.region.toLowerCase() === region.toLowerCase()
+    );
+}
+
+
+
+
 document.getElementById('txtCountry').addEventListener('input', handleSearch);
 LoadData();
 displayCountries(processData())
