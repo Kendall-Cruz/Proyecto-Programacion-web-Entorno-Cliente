@@ -1,0 +1,10 @@
+{
+  "form": {
+    "OrderByName": {
+      "html": "<h3 class = \"secondary-title\">Country:</h3><input type=\"text\" name=\"txtCountry\" id=\"txtCountry\" placeholder=\"\">"
+    },
+    "SelectRegions": {
+      "html": "<h3 class = \"secondary-title\">Region:</h3><select name=\"\" id=\"regions\"><option value=\"Africa\">Africa</option><option value=\"Americas\">Americas</option><option value=\"Asia\">Asia</option><option value=\"Europe\">Europe</option><option value=\"Oceania\">Oceania</option></select>"
+    }
+  }
+}

@@ -27,11 +27,10 @@ body{
     transition: 0.3s;
 }
 .nav-bar{
-    display: none;
+    display: inline;
 }
 .logo{
-    width: 60px;
-    margin: auto;
+    width: 20px;
 }
 .map{
     width: 70%;
