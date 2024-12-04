@@ -46,9 +46,26 @@ body{
     border-radius: 1vh;
     box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
 }
-.title{
-    margin: 30px;
-}
-.description{
+.description , .description-list{
     width: 70%;
+}
+.redirect{
+    text-decoration: none;
+}
+.secondary-title , .title{
+    margin: 10px;
+    text-align: center;
+}
+.card{
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 500px)
+{
+    #top-header a{
+        font-size: 7px;
+    }
 }

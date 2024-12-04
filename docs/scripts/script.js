@@ -102,16 +102,15 @@ function createCountryModal(country) {
                 <h2>${country.name.common}</h2>
             </div>
             <div class="modal-details">
-                <p><strong>Official Name:</strong> ${country.name.official}</p>
-                <p><strong>Region:</strong> ${country.region}</p>
-                <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-                <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
-                <p><strong>Languages:</strong> ${Object.values(country.languages || {}).join(', ')}</p>
-                <p><strong>Currencies:</strong> ${Object.values(country.currencies || {}).map(curr => curr.name).join(', ')}</p>
+                <p class = "detail"><span class="icon official-name-icon"></span><strong>Official Name:</strong> ${country.name.official}</p>
+                <p class = "detail"><span class="icon region-icon"></span><strong>Region:</strong> ${country.region}</p>
+                <p class = "detail"><span class="icon population-icon"></span><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+                <p class = "detail"><span class="icon capital-icon"></span><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
+                <p class = "detail"><span class="icon languages-icon"></span><strong>Languages:</strong> ${Object.values(country.languages || {}).join(', ')}</p>
+                <p class = "detail"><span class="icon currencies-icon"></span><strong>Currencies:</strong> ${Object.values(country.currencies || {}).map(curr => curr.name).join(', ')}</p>
             </div>
         </div>
     `;
-
     // Añade el modal al DOM
     document.body.appendChild(modal);
 
@@ -170,3 +169,5 @@ function createCountryModal(country) {
         txtBox.addEventListener('input', handleSearch);
     }
 }());
+
+

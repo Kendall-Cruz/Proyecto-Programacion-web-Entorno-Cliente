@@ -59,6 +59,7 @@
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
+
 }
 
 @keyframes fadeIn {
@@ -69,7 +70,7 @@
 .modal-content {
     background: linear-gradient(145deg, #ffffff, #e6e6e6);
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 1vh;
     width: 90%;
     max-width: 600px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
@@ -103,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 199px 0px 0px 0px;
+    margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 2px solid #4a90e2;
 }
@@ -112,9 +113,12 @@
     width: 120px;
     height: 80px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0.5vh;
     margin-right: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.modal-titles{
+    width: 50%;
 }
 
 .modal-titles h2 {
@@ -122,13 +126,22 @@
     color: #2c3e50;
     font-size: 1.8rem;
 }
-
-.modal-titles p {
-    margin: 0;
-    color: #7f8c8d;
+.detail{
+    margin: 5px;
+    color: #2e2d2d;
     font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 1vh;
+
 }
 
+.modal-details{
+    line-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
 .detail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -164,6 +177,53 @@
     font-size: 1rem;
     text-align: center;
 }
+
+
+.icon {
+    margin: 0 5px 0 10px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+/* Íconos específicos */
+.official-name-icon {
+    background-image: url('/resources/country-name.png');
+}
+
+.region-icon {
+    background-image: url('/resources/region.png');
+}
+
+.population-icon {
+    background-image: url('/resources/population.png');
+}
+
+.capital-icon {
+    background-image: url('/resources/capital.png');
+}
+
+.languages-icon {
+    background-image: url('/resources/languages.png');
+}
+
+.currencies-icon {
+    background-image: url('/resources/currencies.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 900px)
 {

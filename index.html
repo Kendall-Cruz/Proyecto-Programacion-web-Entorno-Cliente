@@ -8,15 +8,42 @@
     <title>Lista Países</title>
 </head>
 <body>
+    <button class="scroll-top-btn"></button>
     <header id="top-header"></header>
     <main class="description-card">
+        
+
+        <h1 class="title">Countries Web Application</h1>
         <img src="/resources/map.jpg" alt="" class="map">
-        <h2 class="title">
-            Lorem, ipsum.
-        </h2>
-        <p class="description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci quo obcaecati odio error eaque dolore qui libero minima, pariatur numquam, nulla itaque, facilis commodi non deserunt architecto in cum.
-        </p>
+
+        <section class="card">
+            <h2 class="title">
+                Countries Web Application Description
+            </h2>
+            <p class="description">
+                The Countries Web Application is an interactive platform designed to explore geographic information and data about various countries using the Rest Countries API. Its main goal is to provide users with an intuitive and information-rich browsing experience about nations around the world.
+    
+            </p>
+        </section>
+
+
+        <section class="card">
+            <h3 class="secondary-title">Objective</h3>
+            <p class="description">
+                The project serves as a learning tool to develop skills in client-side web programming, API handling, and JavaScript application development techniques.
+            </p>
+        </section>
+
+
+        <section class="card">
+            <h4 class="secondary-title">Properties</h4>
+            <ul class="description-list">
+                <li>Complete visualization of countries with their flags and names.</li>
+                <li>Dynamic <a class="redirect" href="/pages/countriesByName.html?form=OrderByName">search</a> functionality for quick country lookup.</li>
+                <li>Filtering options by geographic <a class="redirect" href="/pages/countriesByName.html?form=SelectRegions">regions.</a></li>
+                <li>Detailed modal displaying specific information about each country.</li>
+            </ul>
+        </section> 
     </main>
     <script src="/docs/scripts/fetch-header.js"></script>
     <script src="/docs/scripts/script.js"></script>
