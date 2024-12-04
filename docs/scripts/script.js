@@ -31,33 +31,39 @@ async function processData() {
 
 // Función para mostrar la lista de países en el contenedor HTML
 function displayCountries(countries) {
-    let container = document.getElementById('api-country-list'); // Obtiene el contenedor
-    container.innerHTML = ''; // Limpia el contenido previo
-    console.log("Si se cargaron los datos");
+    try {
+        let container = document.getElementById('api-country-list'); // Obtiene el contenedor
+        container.innerHTML = ''; // Limpia el contenido previo
+        console.log("Si se cargaron los datos");
 
-    // Recorre la lista de países y crea elementos HTML para cada uno
-    countries.forEach(country => {
-        let section = document.createElement('section'); // Crea un elemento <section>
-        section.classList.add('country-card'); // Añade una clase para estilo
+        // Recorre la lista de países y crea elementos HTML para cada uno
+        countries.forEach(country => {
+            let section = document.createElement('section'); // Crea un elemento <section>
+            section.classList.add('country-card'); // Añade una clase para estilo
 
-        // Define el contenido HTML del país
-        section.innerHTML = `
-            <div class="country-flag">
-                <img src="${country.flags.svg}" alt="" id="flag">
-            </div>
-            <div class="country-names">
-                <h3 class="country-name">${country.name.common}</h3>
-                <p class="official-name">${country.name.official}</p>     
-            </div>
-        `;
+            // Define el contenido HTML del país
+            section.innerHTML = `
+                <div class="country-flag">
+                    <img src="${country.flags.svg}" alt="" id="flag">
+                </div>
+                <div class="country-names">
+                    <h3 class="country-name">${country.name.common}</h3>
+                    <p class="official-name">${country.name.official}</p>     
+                </div>
+            `;
 
-        // Añade un evento al hacer clic para mostrar un modal con más detalles
-        section.addEventListener('click', () => {
-            createCountryModal(country);
+            // Añade un evento al hacer clic para mostrar un modal con más detalles
+            section.addEventListener('click', () => {
+                createCountryModal(country);
+            });
+
+            container.appendChild(section); // Agrega el elemento al contenedor
         });
-
-        container.appendChild(section); // Agrega el elemento al contenedor
-    });
+    } 
+    catch (error) {
+        console.log("Hubo un problema al mostrar la lista.");
+    }
+    
 }
 
 // Función para filtrar países según un término de búsqueda
@@ -91,41 +97,47 @@ function SelectChange(event) {
 
 // Función para crear un modal con detalles de un país
 function createCountryModal(country) {
-    // Crea el contenedor del modal
-    const modal = document.createElement('div');
-    modal.classList.add('country-modal'); // Añade una clase para estilo
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <img src="${country.flags.svg}" alt="${country.name.common} flag" class="modal-flag">
-                <h2>${country.name.common}</h2>
+    try {
+        // Crea el contenedor del modal
+        const modal = document.createElement('div');
+        modal.classList.add('country-modal'); // Añade una clase para estilo
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <img src="${country.flags.svg}" alt="${country.name.common} flag" class="modal-flag">
+                    <h2>${country.name.common}</h2>
+                </div>
+                <div class="modal-details">
+                    <p class = "detail"><span class="icon official-name-icon"></span><strong>Official Name:</strong> ${country.name.official}</p>
+                    <p class = "detail"><span class="icon region-icon"></span><strong>Region:</strong> ${country.region}</p>
+                    <p class = "detail"><span class="icon population-icon"></span><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+                    <p class = "detail"><span class="icon capital-icon"></span><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
+                    <p class = "detail"><span class="icon languages-icon"></span><strong>Languages:</strong> ${Object.values(country.languages || {}).join(', ')}</p>
+                    <p class = "detail"><span class="icon currencies-icon"></span><strong>Currencies:</strong> ${Object.values(country.currencies || {}).map(curr => curr.name).join(', ')}</p>
+                </div>
             </div>
-            <div class="modal-details">
-                <p class = "detail"><span class="icon official-name-icon"></span><strong>Official Name:</strong> ${country.name.official}</p>
-                <p class = "detail"><span class="icon region-icon"></span><strong>Region:</strong> ${country.region}</p>
-                <p class = "detail"><span class="icon population-icon"></span><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-                <p class = "detail"><span class="icon capital-icon"></span><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
-                <p class = "detail"><span class="icon languages-icon"></span><strong>Languages:</strong> ${Object.values(country.languages || {}).join(', ')}</p>
-                <p class = "detail"><span class="icon currencies-icon"></span><strong>Currencies:</strong> ${Object.values(country.currencies || {}).map(curr => curr.name).join(', ')}</p>
-            </div>
-        </div>
-    `;
-    // Añade el modal al DOM
-    document.body.appendChild(modal);
+        `;
+        // Añade el modal al DOM
+        document.body.appendChild(modal);
 
-    // Maneja el cierre del modal al hacer clic en el botón de cierre
-    const closeButton = modal.querySelector('.close-modal');
-    closeButton.addEventListener('click', () => {
-        document.body.removeChild(modal);
-    });
-
-    // Cierra el modal al hacer clic fuera del contenido
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
+        // Maneja el cierre del modal al hacer clic en el botón de cierre
+        const closeButton = modal.querySelector('.close-modal');
+        closeButton.addEventListener('click', () => {
             document.body.removeChild(modal);
-        }
-    });
+        });
+
+        // Cierra el modal al hacer clic fuera del contenido
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    } 
+    catch (error) {
+        console.log("Hubo un problema al mostrar la información del país. Por favor, intenta nuevamente.");
+    }
+    
 }
 
 // Función inmediatamente invocada para inicializar los eventos y cargar los datos
@@ -145,7 +157,7 @@ function createCountryModal(country) {
 
         const data = await response.json();
 
-        // Verifica si existe el formulario solicitado en el JSON
+  
         if (data.form && data.form[formValue]) {
             let form = document.querySelector('.form-input');
             form.innerHTML = data.form[formValue].html;  
@@ -154,7 +166,7 @@ function createCountryModal(country) {
         }
 
     } catch (error) {
-        // Manejo de errores al cargar el JSON o parámetros
+        throw new Error("Hubo un problema al cargar los datos.");
     }
 
     // Añade el evento de cambio al selector de regiones
